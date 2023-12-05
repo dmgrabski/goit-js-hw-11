@@ -27,7 +27,7 @@ async function fetchImages() {
     const images = response.data;
 
     if (images.hits.length === 0) {
-      Notiflix.Report.Failure('Oops!', 'Sorry, there are no images matching your search query. Please try again.', 'OK');
+      Notiflix.Report.failure('Oops!', 'Sorry, there are no images matching your search query. Please try again.', 'OK');
       loadMoreBtn.style.display = 'none';
       return;
     }
@@ -38,10 +38,10 @@ async function fetchImages() {
 
     if (currentPage > Math.ceil(images.totalHits / 40)) {
       loadMoreBtn.style.display = 'none';
-      Notiflix.Report.Info('End of Results', "We're sorry, but you've reached the end of search results.", 'OK');
+      Notiflix.Report.info('End of Results', "We're sorry, but you've reached the end of search results.", 'OK');
     }
   } catch (error) {
-    Notiflix.Report.Failure('Oops!', 'There was an error fetching images. Please try again later.', 'OK');
+    Notiflix.Report.failure('Oops!', 'There was an error fetching images. Please try again later.', 'OK');
     console.error(error);
   }
 }
